@@ -4,20 +4,17 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 
-// Middleware CORS liberado
 app.use(cors({
   origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(express.json());
 
-// Dados
 let items = [
   { id: 1, title: 'Comprar café', description: 'Marca premium' },
   { id: 2, title: 'Estudar React Native', description: 'Focar em Hooks' },
 ];
 
-// Rotas
 app.get('/items', (req, res) => {
   res.json(items);
 });
@@ -58,7 +55,6 @@ app.delete('/items/:id', (req, res) => {
   res.json(deletedItem[0]);
 });
 
-// Rota de saúde
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'OK', 
@@ -67,8 +63,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Iniciar servidor
 app.listen(PORT, () => {
-  console.log(`🚀 Servidor rodando na porta ${PORT}`);
-  console.log(`📍 URL Local: http://localhost:${PORT}`);
+  console.log(`Servidor rodando na porta ${PORT}`);
+  console.log(`URL Local: http://localhost:${PORT}`);
 });
